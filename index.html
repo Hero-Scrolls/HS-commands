@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Scrolls Command Reference</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            max-width: 300px;
+            height: auto;
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        .command-section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .command {
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        .command h3 {
+            margin: 0 0 10px 0;
+            color: #34495e;
+        }
+        .command p {
+            margin: 5px 0;
+        }
+        .example {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        code {
+            background: #ecf0f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .note {
+            color: #e74c3c;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://i.imgur.com/AWQxJbC.png" alt="Hero Scrolls Logo">
+    </div>
+    
+    <!-- General Commands (No Role Required) -->
+    <div class="command-section">
+        <h2>General Commands</h2>
+        <div class="command">
+            <h3><code>!bind</code></h3>
+            <p>Binds a governor ID to your Discord account for bio purposes or manages existing bindings.</p>
+            <p><strong>Subcommands:</strong></p>
+            <ul>
+                <li>No args: Lists your bound governors if any are bound.</li>
+                <li><code>!bind <governor ID></code>: Binds a governor as Primary or Farm.</li>
+                <li><code>!bind clear <governor ID></code>: Clears a specific binding.</li>
+                <li><code>!bind purge</code>: Removes all bindings.</li>
+            </ul>
+            <p class="note">Note: Using <code>!bind</code> alone will show all your bound accounts if you have any.</p>
+            <p class="example">Example: <code>!bind 36426080</code> - Binds governor ID 36426080 as Primary.</p>
+        </div>
+        <div class="command">
+            <h3><code>!selfbind</code></h3>
+            <p>Allows binding of a Governor for a personal Hero Scrolls token account (not for bio binding). Use this on the <a href="https://discord.gg/CRZDQfVG" target="_blank">official Hero Scrolls Discord server</a> in the self-service channel.</p>
+            <p class="example">Example: <code>!selfbind 36426080</code> - Binds governor 36426080 for your token account.</p>
+        </div>
+        <div class="command">
+            <h3><code>!bio</code></h3>
+            <p>Generates a bio image for a governor.</p>
+            <p><strong>Options:</strong></p>
+            <ul>
+                <li>No args: Uses your Primary governor.</li>
+                <li><code>!bio <governor ID></code>: Specific governor in your kingdom.</li>
+                <li><code>!bio <kingdom ID> <governor ID></code>: Specific kingdom and governor.</li>
+                <li><code>!bio clean</code>: Generates a clean bio for your Primary governor.</li>
+                <li><code>!bio <@user></code>: Bio for mentioned user's Primary governor.</li>
+            </ul>
+            <p class="example">Example: <code>!bio 2906 36426080</code> - Generates bio for governor 36426080 in kingdom 2906.</p>
+        </div>
+        <div class="command">
+            <h3><code>!title</code> or <code>!settitle</code></h3>
+            <p>Sets or clears a custom title for your Primary governor (max 22 characters).</p>
+            <p class="example">Example: <code>!title "The Great"</code> - Sets title to "The Great".</p>
+        </div>
+        <div class="command">
+            <h3><code>!leader</code></h3>
+            <p>Generates kingdom leaderboard reports for various stats.</p>
+            <p><strong>Types:</strong></p>
+            <ul>
+                <li><code>power</code>: Top governors by power.</li>
+                <li><code>kp</code>: Total kill points.</li>
+                <li><code>kills</code>: Troop type kill rankings.</li>
+                <li><code>deads</code>: Dead troops rankings.</li>
+                <li><code>chests</code>: Chest contributors.</li>
+                <li><code>forts</code>: Fort launchers.</li>
+                <li><code>pairs</code>: Rally pairs.</li>
+                <li><code>helpers</code>: Alliance helpers.</li>
+                <li><code>farmers</code>: Resource farmers.</li>
+                <li><code>givers</code>: Resource givers.</li>
+                <li><code>marauder</code>: Fort stage progress.</li>
+                <li><code>power kvk</code>: KvK power lost (active KvK only).</li>
+                <li><code>kills kvk</code>: KvK T4/T5 kill progress.</li>
+                <li><code>deads kvk</code>: KvK dead troops progress.</li>
+                <li><code>dkp kvk</code>: KvK DKP rankings.</li>
+                <li><code>kp kvk</code>: KvK kill points progress.</li>
+            </ul>
+            <p><strong>Usage:</strong> Add a 4-digit kingdom ID (e.g., 2906) for another kingdom, or use alone for your kingdom.</p>
+            <p class="example">Example: <code>!leader power</code> - Shows top power rankings for your kingdom.</p>
+            <p class="example">Example: <code>!leader kp 2906</code> - Shows kill points for kingdom 2906.</p>
+            <p class="example">Example: <code>!leader deads kvk</code> - Shows KvK dead troops progress (if KvK active).</p>
+        </div>
+        <div class="command">
+            <h3><code>!setrole</code></h3>
+            <p>Opens a menu to set roles for your Primary governor.</p>
+        </div>
+        <div class="command">
+            <h3><code>!setprimary</code></h3>
+            <p>Sets a bound governor as your Primary governor.</p>
+            <p class="example">Example: <code>!setprimary 36426080</code> - Sets 36426080 as Primary.</p>
+        </div>
+        <div class="command">
+            <h3><code>!setlanguage</code></h3>
+            <p>Opens a menu to set your Primary governor's language.</p>
+        </div>
+        <div class="command">
+            <h3><code>!setutc</code></h3>
+            <p>Opens a menu to set your Primary governor's UTC offset.</p>
+        </div>
+        <div class="command">
+            <h3><code>!setvip</code></h3>
+            <p>Opens a menu to set your Primary governor's VIP level.</p>
+        </div>
+        <div class="command">
+            <h3><code>!progress</code></h3>
+            <p>Shows your Ranked Badge progress for various categories.</p>
+            <p><strong>Categories:</strong> Use <code>!progress</code> alone for a list (e.g., power, kp).</p>
+            <p class="example">Example: <code>!progress power</code> - Shows power badge progress.</p>
+        </div>
+        <div class="command">
+            <h3><code>!season</code></h3>
+            <p>Manages or displays Season dates and reports.</p>
+            <p><strong>Subcommands:</strong></p>
+            <ul>
+                <li><code>!season show</code>: Displays current Season dates.</li>
+                <li><code>!season chests</code>: Generates chest report.</li>
+                <li><code>!season forts</code>: Generates fort report.</li>
+            </ul>
+            <p class="example">Example: <code>!season show</code> - Shows Season dates.</p>
+        </div>
+        <div class="command">
+            <h3><code>!feet</code></h3>
+            <p>Manages feet badges for governors. Each kingdom has a maximum of 20 feet badges.</p>
+            <p><strong>Subcommands:</strong></p>
+            <ul>
+                <li><code>!feet man @mention/governor_id</code>: Sends a Man Feet badge.</li>
+                <li><code>!feet woman @mention/governor_id</code>: Sends a Woman Feet badge.</li>
+                <li><code>!feet wash</code>: Removes your feet badge.</li>
+                <li><code>!sendfeet @mention/governor_id</code>: Sends your current feet badge to another governor.</li>
+            </ul>
+            <p class="example">Example: <code>!feet man 36426080</code> - Sends a Man Feet badge to governor 36426080.</p>
+            <p class="example">Example: <code>!sendfeet @user</code> - Sends your feet badge to the mentioned user.</p>
+        </div>
+        <div class="command">
+            <h3><code>!helpme</code></h3>
+            <p>Displays the default help menu for the Hero Scrolls bot, listing available commands.</p>
+            <p class="example">Example: <code>!helpme</code> - Shows this help information.</p>
+        </div>
+        <div class="command">
+            <h3><code>!gifts</code></h3>
+            <p>Generates a report of gift contributions in your kingdom over a specified number of hours.</p>
+            <p><strong>Usage:</strong> Specify hours (e.g., 24 for last 24 hours, 240 for last 10 days).</p>
+            <p class="example">Example: <code>!gifts 24</code> - Shows gifts from the last 24 hours.</p>
+            <p class="example">Example: <code>!gifts 1</code> - Shows gifts from the last hour.</p>
+        </div>
+        <div class="command">
+            <h3><code>!rallies</code></h3>
+            <p>Shows fort rally activity or statistics for your kingdom over a specified number of hours.</p>
+            <p><strong>Usage:</strong> Specify hours (e.g., 24 for last 24 hours, 240 for last 10 days).</p>
+            <p class="example">Example: <code>!rallies 24</code> - Shows rallies from the last 24 hours.</p>
+            <p class="example">Example: <code>!rallies 240</code> - Shows rallies from the last 10 days.</p>
+        </div>
+        <div class="command">
+            <h3><code>!showid</code></h3>
+            <p>Finds the KvK ID and info for a specified kingdom if it’s in a KvK event.</p>
+            <p><strong>Usage:</strong> Pass a 4-digit kingdom ID (e.g., 2906).</p>
+            <p class="example">Example: <code>!showid 2906</code> - Shows KvK ID and info for kingdom 2906 if in a KvK.</p>
+        </div>
+        <div class="command">
+            <h3><code>!grab</code></h3>
+            <p>Fetches specific data (e.g., kingdom stats or KvK report) for self-bound governors with Hero Scrolls tokens.</p>
+            <p><strong>Usage:</strong> Specify a 4-digit kingdom ID or KvK report ID (e.g., c12593).</p>
+            <p class="example">Example: <code>!grab 2906</code> - Grabs data for kingdom 2906.</p>
+            <p class="example">Example: <code>!grab kvk c12593</code> - Grabs KvK report c12593.</p>
+        </div>
+        <div class="command">
+            <h3><code>!tokens</code></h3>
+            <p>Shows the number of Hero Scrolls tokens available for your individual governor account.</p>
+            <p class="example">Example: <code>!tokens</code> - Displays your personal token count.</p>
+        </div>
+        <div class="command">
+            <h3><code>!buy</code></h3>
+            <p>Initiates the option to buy a Hero Scrolls package.</p>
+            <p class="example">Example: <code>!buy</code> - Starts the purchase process.</p>
+        </div>
+        <div class="command">
+            <h3><code>!kvk</code></h3>
+            <p>Generates a KvK leaderboard for a specified kingdom in a KvK event, based on a stat.</p>
+            <p><strong>Stats:</strong> Power, Kills, Deads, KP, DKP</p>
+            <p><strong>Usage:</strong> Pass a 4-digit kingdom ID (in a KvK) and a stat.</p>
+            <p class="example">Example: <code>!kvk 2906 power</code> - Shows KvK power leaderboard for kingdom 2906.</p>
+            <p class="example">Example: <code>!kvk 1960 deads</code> - Shows KvK deads leaderboard for kingdom 1960.</p>
+            <p class="example">Example: <code>!kvk 2377 kills</code> - Shows KvK kills leaderboard for kingdom 2377.</p>
+        </div>
+    </div>
+
+    <!-- Kingdom Leadership Commands -->
+    <div class="command-section">
+        <h2>Kingdom Leadership Commands</h2>
+        <div class="command">
+            <h3><code>!scantype</code></h3>
+            <p>Sets the preferred scan delivery type for your kingdom (CSV Combined, CSV Multi, Excel).</p>
+        </div>
+        <div class="command">
+            <h3><code>!order</code></h3>
+            <p>Requests data scans for specified kingdoms (4-digit IDs).</p>
+            <p class="example">Example: <code>!order 2906, 2907</code> - Orders scans for kingdoms 2906 and 2907.</p>
+        </div>
+        <div class="command">
+            <h3><code>!event</code></h3>
+            <p>Manages kingdom events.</p>
+            <p><strong>Subcommands:</strong></p>
+            <ul>
+                <li><code>!event list</code>: Lists active events.</li>
+                <li><code>!event report</code>: Pulls up buttons to generate reports for existing events.</li>
+            </ul>
+            <p class="example">Example: <code>!event list</code> - Lists current events.</p>
+        </div>
+        <div class="command">
+            <h3><code>!season</code></h3>
+            <p>Manages or displays Season dates and reports.</p>
+            <p><strong>Subcommands:</strong></p>
+            <ul>
+                <li><code>!season show</code>: Displays current Season dates.</li>
+                <li><code>!season chests</code>: Generates chest report.</li>
+                <li><code>!season forts</code>: Generates fort report.</li>
+                <li><code>!season start YYYY-MM-DD</code>: Sets Season start date.</li>
+                <li><code>!season end YYYY-MM-DD</code>: Sets Season end date.</li>
+            </ul>
+            <p class="example">Example: <code>!season start 2025-01-01</code> - Sets start date to Jan 1, 2025.</p>
+        </div>
+        <div class="command">
+            <h3><code>!seasonstats</code></h3>
+            <p>Displays Season statistics.</p>
+            <p><strong>Types:</strong></p>
+            <ul>
+                <li>No args: General stats.</li>
+                <li><code>!seasonstats chest</code>: Detailed chest stats.</li>
+                <li><code>!seasonstats fort</code>: Detailed fort stats.</li>
+            </ul>
+            <p class="example">Example: <code>!seasonstats chest</code> - Shows detailed chest stats.</p>
+        </div>
+        <div class="command">
+            <h3><code>!report</code></h3>
+            <p>Generates specific reports based on type.</p>
+            <p><strong>Types:</strong></p>
+            <ul>
+                <li><code>!report kvk {kvk_id}</code>: Generates a KvK summary report. Optional: Add number of days to look back (default: from KvK start).</li>
+                <li><code>!report governor {governor_id}</code>: Generates a governor background check (coming soon).</li>
+            </ul>
+            <p class="example">Example: <code>!report kvk C12553</code> - Generates KvK summary for C12553.</p>
+            <p class="example">Example: <code>!report kvk 12553 7</code> - KvK summary for 12553, last 7 days.</p>
+            <p class="example">Example: <code>!report governor 12345678</code> - (Coming soon) Governor background check.</p>
+        </div>
+    </div>
+</body>
+</html>
